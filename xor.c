@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
 char* xor_cipher(char *text, char key) {
     int len = strlen(text);
@@ -8,17 +8,16 @@ char* xor_cipher(char *text, char key) {
     for (int i = 0; i < len; i++) {
         result[i] = text[i] ^ key;
     }
+    result[len] = '\0';
     return result;
 }
 
-int main()
-{
+int main() {
     char data[] = "Secret";
     char key = 'K';
     char* encrypted = xor_cipher(data, key);
-    printf("Encrypted: %s\n", encrypted); // Внимание: Може да съдържа невидими символи!
+    printf("Encrypted: %s\n", encrypted);
     char* decrypted = xor_cipher(encrypted, key);
     printf("Decrypted: %s\n", decrypted);
-
     return EXIT_SUCCESS;
 }
